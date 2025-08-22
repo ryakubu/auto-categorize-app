@@ -72,7 +72,10 @@ export const ExpenseCharts = ({ expenses }: ExpenseChartsProps) => {
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={({ category, percentage }) => `${category} (${(percentage * 100).toFixed(0)}%)`}
+                  label={({ category, value }) => {
+                    const percentage = ((value / totalSpent) * 100).toFixed(0);
+                    return `${category} (${percentage}%)`;
+                  }}
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="amount"
