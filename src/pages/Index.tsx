@@ -4,6 +4,7 @@ import { AuthForm } from "@/components/AuthForm";
 import { ExpenseForm } from "@/components/ExpenseForm";
 import { ExpenseList } from "@/components/ExpenseList";
 import { ExpenseCharts } from "@/components/ExpenseCharts";
+import { ExpenseHistory } from "@/components/ExpenseHistory";
 import { useToast } from "@/hooks/use-toast";
 import { Expense, User } from "@/types/expense";
 
@@ -56,6 +57,7 @@ const Index = () => {
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [showExpenseForm, setShowExpenseForm] = useState(false);
   const [editingExpense, setEditingExpense] = useState<Expense | undefined>();
+  const [currentPage, setCurrentPage] = useState<'dashboard' | 'history'>('dashboard');
   const { toast } = useToast();
 
   // Load demo data when user logs in
@@ -158,29 +160,51 @@ const Index = () => {
       <Navbar 
         onAddExpense={() => setShowExpenseForm(true)}
         onLogout={handleLogout}
+        user={user}
+        currentPage={currentPage}
+        onNavigate={setCurrentPage}
       />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-8">
-          {/* Welcome Section */}
-          <div className="text-center animate-fade-in">
-            <h2 className="text-3xl font-bold mb-2">
-              Welcome back, {user.name}!
-            </h2>
-            <p className="text-muted-foreground">
-              Track your expenses with AI-powered categorization
-            </p>
-          </div>
+          {currentPage === 'dashboard' ? (
+            <>
+              {/* Welcome Section */}
+              <div className="text-center animate-fade-in">
+                <h2 className="text-3xl font-bold mb-2">
+                  Welcome back, {user.name}!
+                </h2>
+                <p className="text-muted-foreground">
+                  Track your expenses with AI-powered categorization
+                </p>
+              </div>
 
-          {/* Charts Section */}
-          <ExpenseCharts expenses={expenses} />
+              {/* Charts Section */}
+              <ExpenseCharts expenses={expenses} />
 
-          {/* Expense List */}
-          <ExpenseList 
-            expenses={expenses}
-            onEdit={openEditForm}
-            onDelete={handleDeleteExpense}
-          />
+              {/* Expense List */}
+              <ExpenseList 
+                expenses={expenses}
+                onEdit={openEditForm}
+                onDelete={handleDeleteExpense}
+              />
+            </>
+          ) : (
+            <>
+              {/* History Header */}
+              <div className="text-center animate-fade-in">
+                <h2 className="text-3xl font-bold mb-2">
+                  Expense History
+                </h2>
+                <p className="text-muted-foreground">
+                  View and download your complete expense records
+                </p>
+              </div>
+
+              {/* Expense History */}
+              <ExpenseHistory expenses={expenses} />
+            </>
+          )}
         </div>
       </main>
 
