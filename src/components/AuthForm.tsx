@@ -5,24 +5,89 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart3, Sparkles } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
-interface AuthFormProps {
-  onLogin: (email: string, password: string) => void;
-  onRegister: (name: string, email: string, password: string) => void;
-}
-
-export const AuthForm = ({ onLogin, onRegister }: AuthFormProps) => {
+export const AuthForm = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [registerData, setRegisterData] = useState({ name: "", email: "", password: "" });
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    onLogin(loginData.email, loginData.password);
+    setIsLoading(true);
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: loginData.email,
+        password: loginData.password,
+      });
+
+      if (error) {
+        toast({
+          title: "Login Failed",
+          description: error.message,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      toast({
+        title: "Welcome back!",
+        description: "You've successfully logged in to your expense tracker.",
+      });
+    } catch (error) {
+      toast({
+        title: "Login Failed",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    onRegister(registerData.name, registerData.email, registerData.password);
+    setIsLoading(true);
+
+    try {
+      const redirectUrl = `${window.location.origin}/`;
+      
+      const { error } = await supabase.auth.signUp({
+        email: registerData.email,
+        password: registerData.password,
+        options: {
+          emailRedirectTo: redirectUrl,
+          data: {
+            name: registerData.name
+          }
+        }
+      });
+
+      if (error) {
+        toast({
+          title: "Registration Failed",
+          description: error.message,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      toast({
+        title: "Account created!",
+        description: "Please check your email to verify your account.",
+      });
+    } catch (error) {
+      toast({
+        title: "Registration Failed",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -68,6 +133,7 @@ export const AuthForm = ({ onLogin, onRegister }: AuthFormProps) => {
                       onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
                       placeholder="your@email.com"
                       required
+                      disabled={isLoading}
                     />
                   </div>
                   
@@ -80,11 +146,16 @@ export const AuthForm = ({ onLogin, onRegister }: AuthFormProps) => {
                       onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                       placeholder="Enter your password"
                       required
+                      disabled={isLoading}
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full bg-gradient-primary hover:shadow-glow">
-                    Sign In
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-gradient-primary hover:shadow-glow"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Signing in..." : "Sign In"}
                   </Button>
                 </form>
               </TabsContent>
@@ -99,6 +170,7 @@ export const AuthForm = ({ onLogin, onRegister }: AuthFormProps) => {
                       onChange={(e) => setRegisterData({ ...registerData, name: e.target.value })}
                       placeholder="Your full name"
                       required
+                      disabled={isLoading}
                     />
                   </div>
                   
@@ -111,6 +183,7 @@ export const AuthForm = ({ onLogin, onRegister }: AuthFormProps) => {
                       onChange={(e) => setRegisterData({ ...registerData, email: e.target.value })}
                       placeholder="your@email.com"
                       required
+                      disabled={isLoading}
                     />
                   </div>
                   
@@ -123,22 +196,22 @@ export const AuthForm = ({ onLogin, onRegister }: AuthFormProps) => {
                       onChange={(e) => setRegisterData({ ...registerData, password: e.target.value })}
                       placeholder="Create a strong password"
                       required
+                      disabled={isLoading}
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full bg-gradient-primary hover:shadow-glow">
-                    Create Account
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-gradient-primary hover:shadow-glow"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Creating account..." : "Create Account"}
                   </Button>
                 </form>
               </TabsContent>
             </Tabs>
           </CardContent>
         </Card>
-        
-        {/* Demo credentials */}
-        <div className="mt-6 text-center text-white/70 text-sm">
-          <p>Demo: Use any email/password to continue</p>
-        </div>
       </div>
     </div>
   );
