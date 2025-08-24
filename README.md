@@ -1,73 +1,141 @@
-# Welcome to your Lovable project
+# Smart Expense Tracker
 
-## Project info
+Smart Expense Tracker is a web application that helps users efficiently track and categorize their expenses. The app integrates AI to suggest categories automatically, reducing manual effort and improving financial tracking accuracy.
 
-**URL**: https://lovable.dev/projects/89572ff0-84b4-4316-a85f-e37cdc9ce883
+## Table of Contents
 
-## How can I edit this code?
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Setup Instructions](#setup-instructions)
+- [Usage Guidelines](#usage-guidelines)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## Project Overview
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/89572ff0-84b4-4316-a85f-e37cdc9ce883) and start prompting.
+Many individuals struggle to track and categorize expenses manually, which can lead to poor financial planning. Smart Expense Tracker solves this by allowing users to input expenses and leveraging AI to automatically suggest categories.
 
-Changes made via Lovable will be committed automatically to this repo.
+AI Integration:
+- **Lovable AI**: Used for rapid prototyping of the application.
+- **ChatGPT**: Assisted in coding, debugging, writing unit tests, and generating documentation.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Add, update, and delete expenses
+- Input fields: description, amount, category, and date
+- AI-powered automatic category suggestions
+- Fully tested components
+- Accessible action buttons (Add/Update, Cancel, Close)
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Tech Stack
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- **Frontend**: React, TypeScript, Vite, shadcn UI components, Tailwind CSS  
+- **Backend**: Supabase (Database & Auth)  
+- **Testing**: Jest, React Testing Library  
+- **CI/CD**: GitHub Actions, Vercel  
+- **Environment Management**: `.env` file
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## Setup Instructions
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/ryakubu/auto-categorize-app.git
+cd auto-categorize-app/auto-categorize-frontend
+
+Install dependencies
+
+npm install
+
+Set up environment variables
+
+Create a .env file in the root of the frontend folder with your Supabase credentials:
+
+env
+
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+Run the development server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+The app will be available at http://localhost:8080/.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Usage Guidelines
 
-**Use GitHub Codespaces**
+Open the application in your browser.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Fill in the expense form with:
 
-## What technologies are used for this project?
+Description
 
-This project is built with:
+Amount
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Date
 
-## How can I deploy this project?
+(Optional) Category
 
-Simply open [Lovable](https://lovable.dev/projects/89572ff0-84b4-4316-a85f-e37cdc9ce883) and click on Share -> Publish.
+AI will suggest a category automatically based on the description.
 
-## Can I connect a custom domain to my Lovable project?
+Use Add/Update to save the expense.
 
-Yes, you can!
+Use Cancel or Close to clear or exit the form.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Testing
+
+Run unit tests using Jest and React Testing Library:
+npm run test
+
+Tests include:
+
+Component rendering
+
+Form submission
+
+Button actions
+
+Contributing
+
+Contributions are welcome! Please follow these steps:
+
+Fork the repository
+
+Create a new branch for your feature (git checkout -b feature-name)
+
+Make your changes
+
+Commit your changes (git commit -m "Add feature")
+
+Push to your branch (git push origin feature-name)
+
+Open a Pull Request
+
+
+License
+
+This project is licensed under the MIT License.
+
+---
+
+## Screenshots
+
+### Expense Form
+![Expense Form](screenshots/expense-form.png)
+
+### AI Category Suggestion
+![AI Category Suggestion](screenshots/ai-category.gif)
+
+### Test Results
+![Jest Test Results](screenshots/test-results.png)
+
