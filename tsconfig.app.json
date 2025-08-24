@@ -24,7 +24,12 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+
+    /* Added for testing */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["jest", "node", "@testing-library/jest-dom"]
   },
   "include": ["src"]
 }

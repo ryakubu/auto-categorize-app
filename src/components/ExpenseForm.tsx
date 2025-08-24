@@ -53,7 +53,7 @@ export const ExpenseForm = ({ onSubmit, onClose, editExpense }: ExpenseFormProps
       amount: parseFloat(amount),
       category,
       date,
-      userId: "current-user" // In real app, get from auth context
+      userId: "current-user", // In real app, get from auth context
     });
   };
 
@@ -64,11 +64,16 @@ export const ExpenseForm = ({ onSubmit, onClose, editExpense }: ExpenseFormProps
           <CardTitle className="text-xl">
             {editExpense ? "Edit Expense" : "Add New Expense"}
           </CardTitle>
-          <Button variant="ghost" size="sm" onClick={onClose}>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onClose}
+            aria-label="Close" // ✅ Added for accessibility/testing
+          >
             <X className="h-4 w-4" />
           </Button>
         </CardHeader>
-        
+
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
