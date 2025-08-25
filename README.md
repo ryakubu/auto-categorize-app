@@ -1,39 +1,24 @@
-# Smart Expense Tracker
+# Auto Categorize App  
 
-Smart Expense Tracker is a web application that helps users efficiently track and categorize their expenses. The app integrates AI to suggest categories automatically, reducing manual effort and improving financial tracking accuracy.
 
-## Table of Contents
+📂 **Repository Link:** https://github.com/ryakubu/auto-categorize-app  
+🎥 **Video Demo:** https://drive.google.com/file/d/1veVo8OI69TO_cZieShVkW3PLUM7wtIpC/view?usp=sharing  
 
-- [Project Overview](#project-overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Setup Instructions](#setup-instructions)
-- [Usage Guidelines](#usage-guidelines)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
-## Project Overview
+An AI-powered expense tracking application that automatically suggests categories for your expenses based on the description.  
 
-Many individuals struggle to track and categorize expenses manually, which can lead to poor financial planning. Smart Expense Tracker solves this by allowing users to input expenses and leveraging AI to automatically suggest categories.
 
-AI Integration:
-- **Lovable AI**: Used for rapid prototyping of the application.
-- **ChatGPT**: Assisted in coding, debugging, writing unit tests, and generating documentation.
-
----
-
-## Features
-
-- Add, update, and delete expenses
-- Input fields: description, amount, category, and date
-- AI-powered automatic category suggestions
-- Fully tested components
-- Accessible action buttons (Add/Update, Cancel, Close)
+## 🚀 Features
+- Add, update, and manage expenses easily.  
+- AI-powered automatic category suggestion.  
+- User-friendly interface with form validation.  
+- Supabase integration for backend storage.  
+- Unit tests with Jest and React Testing Library.  
 
 ---
+
 
 ## Tech Stack
 
@@ -45,88 +30,79 @@ AI Integration:
 
 ---
 
-## Setup Instructions
 
-1. **Clone the repository**
+## 📂 Project Setup
+
+### 1. Clone the Repository
+
 
 ```bash
+
+
 git clone https://github.com/ryakubu/auto-categorize-app.git
 cd auto-categorize-app/auto-categorize-frontend
 
-Install dependencies
 
-npm install
-
-Set up environment variables
-
-Create a .env file in the root of the frontend folder with your Supabase credentials:
-
-env
-
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-
-Run the development server
-npm run dev
-
-The app will be available at http://localhost:8080/.
-
-Usage Guidelines
-
-Open the application in your browser.
-
-Fill in the expense form with:
-
-Description
-
-Amount
-
-Date
-
-(Optional) Category
-
-AI will suggest a category automatically based on the description.
-
-Use Add/Update to save the expense.
-
-Use Cancel or Close to clear or exit the form.
+2. Install Dependencies
+    npm install
 
 
-Testing
+3. Configure Environment Variables
 
-Run unit tests using Jest and React Testing Library:
-npm run test
-
-Tests include:
-
-Component rendering
-
-Form submission
-
-Button actions
-
-Contributing
-
-Contributions are welcome! Please follow these steps:
-
-Fork the repository
-
-Create a new branch for your feature (git checkout -b feature-name)
-
-Make your changes
-
-Commit your changes (git commit -m "Add feature")
-
-Push to your branch (git push origin feature-name)
-
-Open a Pull Request
+    Create a .env file in the root of the frontend folder and add your Supabase credentials:
+    VITE_SUPABASE_URL=your_supabase_url
+    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 
-License
+4. Run the Development Server
+    npm run dev
+    The app will be available at 👉 http://localhost:8080
 
-This project is licensed under the MIT License.
 
----
+📖 Usage
+
+    1.	Open the application in your browser.
+    2.	Fill in the expense form with:
+        o	Description
+        o	Amount
+        o	Date
+        o	(Optional) Category
+    3.	The AI will automatically suggest a category based on the description.
+    4.	Click Add/Update to save the expense.
+    5.	Use Cancel or Close to clear or exit the form.
+
+
+🧪 Testing
+
+    Run unit tests with:
+    npm run test
+
+Tests include
+    •	✅ Component rendering
+    •	✅ Form submission
+    •	✅ Button actions
+
+
+
+🤝 Contributing
+
+    Contributions are welcome! Please follow these steps:
+        1.	Fork the repository.
+        2.	Create a new branch:
+        3.	git checkout -b feature-name
+        4.	Make your changes.
+        5.	Commit your changes:
+        6.	git commit -m "Add feature"
+        7.	Push to your branch:
+        8.	git push origin feature-name
+        9.	Open a Pull Request.
+
+
+🙌 Acknowledgements
+    •	The prototype was generated using Lovable AI.
+    •	I used ChatGPT to assist with development, documentation, and improvements.
+
+
 
 ## Screenshots
 
@@ -138,4 +114,5 @@ This project is licensed under the MIT License.
 
 ### Test Results
 ![Jest Test Results](screenshots/test-results.png)
+
 
