@@ -25,5 +25,3 @@ const App = () => (
 );
 
 export default App;
-
-this is the content of my App.tsx
