@@ -3,7 +3,7 @@
 
 📂 **Repository Link:** https://github.com/ryakubu/auto-categorize-app  
 🎥 **Video Demo:** https://drive.google.com/file/d/1veVo8OI69TO_cZieShVkW3PLUM7wtIpC/view?usp=sharing  
-
+🌐 Live Demo (Netlify): https://smartxp.netlify.app
 
 ---
 
@@ -15,7 +15,8 @@ An AI-powered expense tracking application that automatically suggests categorie
 - AI-powered automatic category suggestion.  
 - User-friendly interface with form validation.  
 - Supabase integration for backend storage.  
-- Unit tests with Jest and React Testing Library.  
+- Unit tests with Jest and React Testing Library.
+- Successfully deployed on Netlify for live usage.
 
 ---
 
@@ -25,7 +26,7 @@ An AI-powered expense tracking application that automatically suggests categorie
 - **Frontend**: React, TypeScript, Vite, shadcn UI components, Tailwind CSS  
 - **Backend**: Supabase (Database & Auth)  
 - **Testing**: Jest, React Testing Library  
-- **CI/CD**: GitHub Actions, Vercel  
+- **CI/CD**: GitHub Actions, Netlify 
 - **Environment Management**: `.env` file
 
 ---
